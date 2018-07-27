@@ -1,35 +1,38 @@
 package com.ebrightmoon.bean;
 
 public class UserInfo {
-	private int id;
-	private String userName;
-	private String realName;
-	
 
-	
-	public int getId() {
-		return id;
+	private String name;
+	private String age;
+	private String des;
+
+	public String getDes() {
+		return des;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setDes(String des) {
+		this.des = des;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getRealName() {
-		return realName;
+	public String getAge() {
+		return age;
 	}
 
-	public void setRealName(String realName) {
-		this.realName = realName;
+	public void setAge(String age) {
+		this.age = age;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "UserInfo [name=" + name + ", age=" + age + ", des=" + des + "]";
+	}
 
 }

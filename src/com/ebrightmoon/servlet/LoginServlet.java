@@ -130,9 +130,9 @@ public class LoginServlet extends HttpServlet {
 				List<UserInfo> accounts = new ArrayList<UserInfo>();
 				while (rs.next()) {
 					UserInfo userInfo = new UserInfo();
-					userInfo.setId(rs.getInt("id"));
-					userInfo.setUserName(rs.getString("username"));
-					userInfo.setRealName(rs.getString("realname"));
+//					userInfo.setId(rs.getInt("id"));
+//					userInfo.setUserName(rs.getString("username"));
+//					userInfo.setRealName(rs.getString("realname"));
 					accounts.add(userInfo);
 				}
 				return accounts;

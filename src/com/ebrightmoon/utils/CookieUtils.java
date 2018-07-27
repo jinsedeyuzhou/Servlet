@@ -2,8 +2,7 @@ package com.ebrightmoon.utils;
 import javax.servlet.http.Cookie;
 
 /**
- * 封装获取客户端Cookie信息的工具类.
- * @author JYL
+ 
  */
 public class CookieUtils {
 

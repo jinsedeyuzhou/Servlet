@@ -4,6 +4,7 @@ package com.ebrightmoon.servlet;
 
 import java.io.UnsupportedEncodingException;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 /**
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpServletRequestWrapper;
  * @author Administrator
  *
  */
-
 public class CustomServletRequest extends HttpServletRequestWrapper {
 
 	/**
@@ -30,7 +30,6 @@ public class CustomServletRequest extends HttpServletRequestWrapper {
 	@Override
 	public String getParameter(String name) {
 		String paramValue = super.getParameter(name);
-		
 		try {
 			if(paramValue != null){
 				paramValue = new String(paramValue.getBytes("ISO-8859-1"),"utf-8");

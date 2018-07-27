@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 /**
  * Servlet implementation class JsonServlet
  */
-@WebServlet("/JsonServlet")
+@WebServlet("/JSONServlet")
 public class JSONServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserInfo userInfo;
@@ -39,7 +39,7 @@ public class JSONServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		UserInfo info=null;
 		StringBuffer jb = new StringBuffer();
 		String line = null;
 		String result = "";
@@ -68,9 +68,9 @@ public class JSONServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 //		ServletOutputStream out =response.getOutputStream();
 		PrintWriter out = response.getWriter();
-//		out.write(userInfo.toString());
+		out.write(userInfo.toString());
 //		out.write(userInfo.toString().getBytes("utf-8"));
-		out.println(jb.toString());
+//		out.println(jb.toString());
 	}
 
 	/**
