@@ -4,9 +4,9 @@ import com.ebrightmoon.bean.UserInfo;
 
 public interface UserService {
 
-	public UserInfo findUserByName(String name);
+	public boolean findUser(UserInfo user);
 
-	public boolean registUser(UserInfo user);
+	public boolean regist(UserInfo user);
 
 	public UserInfo login(UserInfo user);
 

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.ebrightmoon.servlet.CustomServletRequest;
+import com.ebrightmoon.servlet.common.CustomServletRequest;
 
 /**
  * Servlet Filter implementation class EncodingFilter

@@ -16,6 +16,9 @@ import com.ebrightmoon.utils.JDBCUtils;
 
 public class UserDaoImpl implements UserDao {
 
+	/* (non-Javadoc)
+	 * @see com.ebrightmoon.dao.UserDao#selectUserByName(java.lang.String)
+	 */
 	@Override
 	public UserInfo selectUserByName(String name) {
 		// TODO Auto-generated method stub
@@ -33,6 +36,9 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	
+	/* (non-Javadoc)
+	 * @see com.ebrightmoon.dao.UserDao#selectUserByName(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public UserInfo selectUserByName(String name, String pwd) {
 		// TODO Auto-generated method stub
@@ -49,6 +55,29 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	
+	
+	/* (non-Javadoc)
+	 * @see com.ebrightmoon.dao.UserDao#selectUser(com.ebrightmoon.bean.UserInfo)
+	 */
+	@Override
+	public UserInfo selectUser(UserInfo userInfo) {
+		// TODO Auto-generated method stub
+		try {
+			String sql = "SELECT * FROM user_info WHERE user_name=? AND user_pwd=?";
+			QueryRunner queryRunner = new QueryRunner(JDBCHelper.getDataSource());
+			UserInfo user = queryRunner.query(sql, new BeanHandler<UserInfo>(UserInfo.class), userInfo.getUserName(),userInfo.getUserPwd());
+			return user;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	
+	/* (non-Javadoc)
+	 * @see com.ebrightmoon.dao.UserDao#insertUser(com.ebrightmoon.bean.UserInfo)
+	 */
 	@Override
 	public Integer insertUser(UserInfo user) {
 		// TODO Auto-generated method stub
@@ -66,6 +95,9 @@ public class UserDaoImpl implements UserDao {
 	}
 
 
+	/* (non-Javadoc)
+	 * @see com.ebrightmoon.dao.UserDao#updateUser(com.ebrightmoon.bean.UserInfo)
+	 */
 	@Override
 	public Integer updateUser(UserInfo user) {
 		// TODO Auto-generated method stub
@@ -82,6 +114,25 @@ public class UserDaoImpl implements UserDao {
 		return null;
 	}
 
+
+
+	/* (non-Javadoc)
+	 * @see com.ebrightmoon.dao.UserDao#deleteUser(com.ebrightmoon.bean.UserInfo)
+	 */
+	@Override
+	public Integer deleteUser(UserInfo user) {
+		// TODO Auto-generated method stub
+		try {
+			String sql = "DELETE FROM user_info WHERE user_name=?";
+			QueryRunner queryRunner = new QueryRunner(JDBCHelper.getDataSource());
+			Integer result = queryRunner.update(sql,user.getUserName());
+			return result;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	
 }

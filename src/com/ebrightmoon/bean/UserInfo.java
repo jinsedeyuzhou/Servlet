@@ -3,17 +3,7 @@ package com.ebrightmoon.bean;
 /**
  * 
  * @author Administrator
- * user_id              int not null auto_increment,
-   user_name            char(16),
-   sex                  char(4),
-   user_pwd             varchar(50),
-   mobile               char(11),
-   user_email           varchar(50),
-   gen_time             timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-   login_time           timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-   last_login_time      timestamp DEFAULT CURRENT_TIMESTAMP,
-   token                varchar(50),
-   primary key (user_id)
+ * 
  */
 public class UserInfo {
 
