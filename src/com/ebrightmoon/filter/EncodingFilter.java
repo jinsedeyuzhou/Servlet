@@ -55,6 +55,7 @@ public class EncodingFilter implements Filter {
 			request = new CustomServletRequest(request);
 		}else if("POST".equals(method)){
 			request.setCharacterEncoding("utf-8");
+			
 		}
 		logger.info("doFilter");
 		response.setContentType("text/html;charset=utf-8");

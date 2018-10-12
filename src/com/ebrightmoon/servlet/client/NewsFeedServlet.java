@@ -2,6 +2,7 @@ package com.ebrightmoon.servlet.client;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -40,6 +41,9 @@ public class NewsFeedServlet extends HttpServlet {
 		ResponseResult<List<NewsFeed>> responseResult=new ResponseResult<List<NewsFeed>>();
 		NewsFeedService newsFeedService=new NewsFeedServiceImpl();
 		List<NewsFeed> newsFeeds = newsFeedService.findTenNews();
+		Enumeration<String> parameterNames = request.getParameterNames();
+		responseResult.setCode(200);
+		responseResult.setMessage("«Î«Û≥…π¶");
 		responseResult.setData(newsFeeds);
 		PrintWriter out = response.getWriter();
 		out.write(GsonUtil.gson().toJson(responseResult));

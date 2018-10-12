@@ -6,7 +6,7 @@ public interface UserService {
 
 	public boolean findUser(UserInfo user);
 
-	public boolean regist(UserInfo user);
+	public boolean register(UserInfo user);
 
 	public UserInfo login(UserInfo user);
 

@@ -24,4 +24,11 @@ public interface NewsFeedDao {
 	 * 获取最新十条数据
 	 */
 	public List<NewsFeed> selectTenNews();
+	
+	/**
+	 * 新增一条新闻
+	 * @param newsFeed
+	 * @return
+	 */
+	public Integer insertNewsFeed(NewsFeed newsFeed);
 }

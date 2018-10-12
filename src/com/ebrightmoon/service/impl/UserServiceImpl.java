@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
 	 * com.ebrightmoon.service.UserService#regist(com.ebrightmoon.bean.UserInfo)
 	 */
 	@Override
-	public boolean regist(UserInfo user) {
+	public boolean register(UserInfo user) {
 		// TODO Auto-generated method stub
 		UserDao userDao = new UserDaoImpl();
 		Integer integer = userDao.insertUser(user);

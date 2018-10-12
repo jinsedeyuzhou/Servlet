@@ -17,7 +17,16 @@ public class UserInfo {
 	private long loginTime;
 	private long lastLoginTime;
 	private String token;
+	private String uuid;
 	
+	
+	
+	public String getUuid() {
+		return uuid;
+	}
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
 	public int getUserId() {
 		return userId;
 	}

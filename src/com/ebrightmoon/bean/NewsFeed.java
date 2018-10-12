@@ -1,15 +1,17 @@
 package com.ebrightmoon.bean;
 
+import java.sql.Timestamp;
+
 /**
  * @author Administrator
  * 
  */
 public class NewsFeed {
-	private int id;
+	private int feedId;
 	private String feedTitle;
 	private String feedUrl;
 	private String feedImg;
-	private long createTime;
+	private Timestamp updateTime;
 	private String feedTopic;
 	private int feedType;
 	private String feedThumbnail;
@@ -22,12 +24,12 @@ public class NewsFeed {
 		this.feedThumbnail = feedThumbnail;
 	}
 
-	public int getId() {
-		return id;
+	public int getFeedId() {
+		return feedId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setFeedId(int feedId) {
+		this.feedId = feedId;
 	}
 
 	public String getFeedTitle() {
@@ -54,12 +56,14 @@ public class NewsFeed {
 		this.feedImg = feedImg;
 	}
 
-	public long getCreateTime() {
-		return createTime;
+
+
+	public Timestamp getUpdateTime() {
+		return updateTime;
 	}
 
-	public void setCreateTime(long createTime) {
-		this.createTime = createTime;
+	public void setUpdateTime(Timestamp updateTime) {
+		this.updateTime = updateTime;
 	}
 
 	public String getFeedTopic() {
