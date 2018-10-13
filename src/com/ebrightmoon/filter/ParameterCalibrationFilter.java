@@ -34,6 +34,7 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 @WebFilter(filterName = "ParameterCalibrationFilter", urlPatterns = "/*")
 public class ParameterCalibrationFilter implements Filter {
 	private final static Log logger = LogFactory.getLog(EncodingFilter.class);
+
 	/**
 	 * Default constructor.
 	 */
@@ -55,16 +56,25 @@ public class ParameterCalibrationFilter implements Filter {
 			throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
-		logger.info("doFilter ParameterCalibrationFilter");
 		ResponseResult responseResult = new ResponseResult<>();
-		HttpServletRequestReplacedWrapper   requestWrapper = null;
+		HttpServletRequestReplacedWrapper requestWrapper = null;
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-		 if(request instanceof HttpServletRequest) {
-			 requestWrapper = new HttpServletRequestReplacedWrapper((HttpServletRequest) request);  
-         }  
+		if (request instanceof HttpServletRequest) {
+			requestWrapper = new HttpServletRequestReplacedWrapper((HttpServletRequest) request);
+		}
 		String timestamp = httpServletRequest.getHeader("Timestamp");
 		String platform = httpServletRequest.getHeader("Platform");
 		String sign = httpServletRequest.getHeader("Sign");
+
+		if (timestamp==null||platform==null&&sign==null) {
+			responseResult.setCode(406);
+			responseResult.setMessage("请求校验不通过");
+			responseResult.setData(new Object());
+			PrintWriter out = response.getWriter();
+			out.write(GsonUtil.gson().toJson(responseResult));
+			return;
+		}
+		
 		Map<String, Object> params = new HashMap<>();
 		params.put("Timestamp", timestamp);
 		params.put("Platform", platform);
@@ -77,15 +87,14 @@ public class ParameterCalibrationFilter implements Filter {
 				String name = (String) parameterNames.nextElement();
 				params.put(name, request.getParameter(name));
 			}
-			StringBuffer builder=HttpUtils.spellParams(params);
-			if (sign.equals(MD5.encode(builder.toString()))) 
-			{
+			StringBuffer builder = HttpUtils.spellParams(params);
+			if (sign.equals(MD5.encode(builder.toString()))) {
+				logger.info(builder.toString());
 				chain.doFilter(request, response);
-			}else
-			{
+			} else {
 				responseResult.setCode(406);
 				responseResult.setMessage("请求校验不通过");
-//				responseResult.setData(new Object());
+				// responseResult.setData(new Object());
 				PrintWriter out = response.getWriter();
 				out.write(GsonUtil.gson().toJson(responseResult));
 			}
@@ -105,20 +114,18 @@ public class ParameterCalibrationFilter implements Filter {
 			try {
 				// 使用JSONObject的parseObject方法解析JSON字符串
 				Gson gson = new Gson();
-				Map<String, Object> map=new HashMap<>();
-				map=gson.fromJson(jb.toString(), Map.class);
+				Map<String, Object> map = new HashMap<>();
+				map = gson.fromJson(jb.toString(), Map.class);
 				params.putAll(map);
 			} catch (Exception e) {
 				// crash and burn
 				throw new IOException("Error parsing JSON request string");
 			}
-
-			StringBuffer builder=HttpUtils.spellParams(params);
-			if (sign.equals(MD5.encode(builder.toString()))) 
-			{
+			StringBuffer builder = HttpUtils.spellParams(params);
+			if (sign.equals(MD5.encode(builder.toString()))) {
+				logger.info(builder.toString());
 				chain.doFilter(requestWrapper, response);
-			}else
-			{
+			} else {
 				responseResult.setCode(406);
 				responseResult.setMessage("请求校验不通过");
 				responseResult.setData(new Object());
@@ -126,7 +133,7 @@ public class ParameterCalibrationFilter implements Filter {
 				out.write(GsonUtil.gson().toJson(responseResult));
 			}
 		}
-		
+
 	}
 
 	/**
