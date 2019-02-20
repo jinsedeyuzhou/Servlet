@@ -2,7 +2,7 @@
 /* DBMS name:      MySQL 5.0                                    */
 /* Created on:     2018/9/15 17:28:53                           */
 /*==============================================================*/
-
+create database news_system character set utf-8;
 
 drop table if exists my_topics;
 
@@ -25,7 +25,7 @@ create table my_topics
    primary key (my_topic_id)
 );
 
-alter table my_topics comment '¶©ÔÄÖ÷Ìâ';
+alter table my_topics comment 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 /*==============================================================*/
 /* Table: news_feed                                             */
@@ -44,12 +44,12 @@ create table news_feed
 );
 
 
-INSERT INTO news_feed VALUES(null,"¼Ò³¤¿ªÅÜ³µ½ÓËÍº¢×Ó","www.baidu.com","www.baidu.com",null,"0",1,"www.baidu.com");
+INSERT INTO news_feed VALUES(null,"ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ü³ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½ï¿½","www.baidu.com","www.baidu.com",null,"0",1,"www.baidu.com");
 SELECT * FROM news_feed;
 
 alter TABLE news_feed ADD feed_thumbnail VARCHAR(50) AFTER feed_type;
 
-alter table news_feed comment 'ÐÂÎÅÁÐ±í';
+alter table news_feed comment 'ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½';
 
 /*==============================================================*/
 /* Table: topics                                                */
@@ -62,7 +62,7 @@ create table topics
    primary key (topic_id)
 );
 
-alter table topics comment 'Ö÷Ìâ£ºÕ¹Ê¾²»Í¬µØÇø»òÕß';
+alter table topics comment 'ï¿½ï¿½ï¿½â£ºÕ¹Ê¾ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½';
 
 /*==============================================================*/
 /* Table: users                                                  */

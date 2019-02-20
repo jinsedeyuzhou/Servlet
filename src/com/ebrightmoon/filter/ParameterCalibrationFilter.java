@@ -66,7 +66,7 @@ public class ParameterCalibrationFilter implements Filter {
 		String platform = httpServletRequest.getHeader("Platform");
 		String sign = httpServletRequest.getHeader("Sign");
 
-		if (timestamp==null||platform==null&&sign==null) {
+		if (timestamp==null||platform==null||sign==null) {
 			responseResult.setCode(406);
 			responseResult.setMessage("请求校验不通过");
 			responseResult.setData(new Object());
