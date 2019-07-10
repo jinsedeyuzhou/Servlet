@@ -1,6 +1,7 @@
-/build/*
+/build/
 .DS_Store
-.settings
+.gitgnore
+/target/
+/.settings/
 .classpath
 .project
-.gitgnore
