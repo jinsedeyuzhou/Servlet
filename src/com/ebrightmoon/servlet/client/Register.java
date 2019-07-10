@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tomcat.util.security.MD5Encoder;
-
 import com.ebrightmoon.bean.ResponseResult;
 import com.ebrightmoon.bean.UserInfo;
 import com.ebrightmoon.service.UserService;
@@ -69,7 +67,7 @@ public class Register extends HttpServlet {
 		String line = null;
 		String result = "";
 		try {
-			// ¶ÁÈ¡ÊäÈëÁ÷µ½StringBufferÖÐ
+			// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½StringBufferï¿½ï¿½
 			BufferedReader reader = request.getReader();
 			while ((line = reader.readLine()) != null)
 				jb.append(line);
@@ -78,7 +76,7 @@ public class Register extends HttpServlet {
 			e.printStackTrace();
 		}
 		try {
-			// Ê¹ÓÃJSONObjectµÄparseObject·½·¨½âÎöJSON×Ö·û´®
+			// Ê¹ï¿½ï¿½JSONObjectï¿½ï¿½parseObjectï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JSONï¿½Ö·ï¿½ï¿½ï¿½
 			Gson gson = new Gson();
 			userInfo = gson.fromJson(jb.toString(), UserInfo.class);
 		} catch (Exception e) {
@@ -91,14 +89,14 @@ public class Register extends HttpServlet {
 			token=MD5.encode(userInfo.getMobile()+userInfo.getUserPwd()+userInfo.getUuid()+System.currentTimeMillis());
 			userInfo.setToken(token);
 			boolean register = service.register(userInfo);
-			// ÏÈ½«·þÎñÆ÷ÊÕµ½µÄJSON×Ö·û´®´òÓ¡µ½¿Í»§¶Ë£¬ÔÙ½«¸Ã×Ö·û´®×ª»»ÎªJSON¶ÔÏóÈ»ºóÔÙ×ª»»³ÉµÄJSON×Ö·û´®´òÓ¡µ½¿Í»§¶Ë
+			// ï¿½È½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½JSONï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½Í»ï¿½ï¿½Ë£ï¿½ï¿½Ù½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½×ªï¿½ï¿½ÎªJSONï¿½ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½Éµï¿½JSONï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½
 			responseResult.setCode(200);
-			responseResult.setMessage("×¢²á³É¹¦£¡");
+			responseResult.setMessage("×¢ï¿½ï¿½É¹ï¿½ï¿½ï¿½");
 			responseResult.setData(userInfo);
 		}else
 		{
 			responseResult.setCode(200);
-			responseResult.setMessage("ÓÃ»§ÒÑ´æÔÚ");
+			responseResult.setMessage("ï¿½Ã»ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½");
 			responseResult.setData(new Object());
 		}
 		

@@ -7,7 +7,7 @@ import com.ebrightmoon.bean.NewsFeed;
 public interface NewsFeedDao {
 
 	/**
-	 * 获取所有新闻数据
+	 * 锟斤拷取锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
 	 * @return
 	 */
 	public List<NewsFeed> selectAllNews();
@@ -15,18 +15,18 @@ public interface NewsFeedDao {
 	/**
 	 * @param bookid
 	 * @return
-	 * 根据新闻id获取某一条数据
+	 * 锟斤拷锟斤拷锟斤拷锟斤拷id锟斤拷取某一锟斤拷锟斤拷锟斤拷
 	 */
-	public NewsFeed selectNewsById(Integer bookid);
+	public NewsFeed selectNewsById(Integer id);
 	
 	/**
 	 * @return
-	 * 获取最新十条数据
+	 * 锟斤拷取锟斤拷锟斤拷十锟斤拷锟斤拷锟斤拷
 	 */
 	public List<NewsFeed> selectTenNews();
 	
 	/**
-	 * 新增一条新闻
+	 * 锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷
 	 * @param newsFeed
 	 * @return
 	 */

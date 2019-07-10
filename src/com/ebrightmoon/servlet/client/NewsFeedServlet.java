@@ -43,7 +43,7 @@ public class NewsFeedServlet extends HttpServlet {
 		List<NewsFeed> newsFeeds = newsFeedService.findTenNews();
 		Enumeration<String> parameterNames = request.getParameterNames();
 		responseResult.setCode(200);
-		responseResult.setMessage("请求成功");
+		responseResult.setMessage("获取数据成功");
 		responseResult.setData(newsFeeds);
 		PrintWriter out = response.getWriter();
 		out.write(GsonUtil.gson().toJson(responseResult));
